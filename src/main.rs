@@ -1,7 +1,6 @@
 pub mod accounts;
 pub mod schema;
 pub mod pool;
-pub mod server;
 
 use crate::accounts::models::*;
 use diesel::prelude::*;
