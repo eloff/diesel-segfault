@@ -14,7 +14,6 @@ pub fn create_pool() -> PgPool {
     Pool::builder()
         .min_idle(Some(10))
         .max_size(96)
-        .max_lifetime(Some(std::time::Duration::from_secs(60*60)))
         .build(manager)
         .expect("Failed to create pool.")
 }
