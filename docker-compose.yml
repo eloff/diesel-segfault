@@ -1,0 +1,26 @@
+version: "3.10"
+
+services:
+  app:
+    image: acme:latest
+    build: .
+    command: '/bin/bash -c "diesel migration run && ./target/debug/acme"'
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://acme:secret@db/acme
+
+  db:
+    image: postgres:15
+    restart: always
+    volumes:
+      - pg-data:/var/lib/postgres
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: acme
+      POSTGRES_DB: acme
+
+volumes:
+  pg-data:
