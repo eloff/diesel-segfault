@@ -1,0 +1,31 @@
+[package]
+name = "acme"
+version = "0.1.0"
+authors = ["Eloff <dan.eloff@gmail.com>"]
+edition = "2021"
+
+[profile.dev]
+panic = "unwind"
+
+[profile.release]
+panic = "unwind"
+
+[env]
+PQ_LIB_STATIC = 1
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# double [] because bin is an array (can have multiple binaries output, but just one lib)
+[[bin]]
+name = "acme"
+path = "src/main.rs"
+test = false
+doctest = false
+
+[dependencies]
+chrono = "0.4"
+uuid = "1.2"
+diesel = { version="2.0.2", features=["postgres","r2d2","32-column-tables","without-deprecated","uuid","chrono","serde_json"] }
+dotenvy = "0.15"
+
+[dev-dependencies]
