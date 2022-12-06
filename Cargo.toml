@@ -20,6 +20,7 @@ test = false
 doctest = false
 
 [dependencies]
+openssl = "0.10.43"
 chrono = "0.4"
 uuid = "1.2"
 diesel = { version="2.0.2", features=["postgres","r2d2","uuid","chrono"] }

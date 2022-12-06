@@ -6,6 +6,8 @@ use crate::accounts::models::*;
 use diesel::prelude::*;
 
 pub fn main() {
+    openssl::init();
+
     use self::schema::accounts::dsl::*;
 
     let pool = pool::create_pool();
